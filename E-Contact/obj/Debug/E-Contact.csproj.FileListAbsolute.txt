@@ -1,0 +1,10 @@
+C:\Users\trevor\Documents\GitHub\E-Contact\bin\Debug\E-Contact.exe.config
+C:\Users\trevor\Documents\GitHub\E-Contact\bin\Debug\E-Contact.exe
+C:\Users\trevor\Documents\GitHub\E-Contact\bin\Debug\E-Contact.pdb
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.csprojAssemblyReference.cache
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E_Contact.Econtact.resources
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E_Contact.Properties.Resources.resources
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.csproj.GenerateResource.cache
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.csproj.CoreCompileInputs.cache
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.exe
+C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.pdb
