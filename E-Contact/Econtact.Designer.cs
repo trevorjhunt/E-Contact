@@ -1,6 +1,6 @@
-﻿namespace E_Contact
+﻿namespace EContact
 {
-    partial class Econtact
+    partial class EContact
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Econtact));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EContact));
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.lblContactID = new System.Windows.Forms.Label();
             this.txtboxContactId = new System.Windows.Forms.TextBox();
@@ -46,12 +46,12 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvContactList = new System.Windows.Forms.DataGridView();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtboxSearch = new System.Windows.Forms.TextBox();
             this.picboxExit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContactList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxExit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +77,6 @@
             this.lblContactID.Size = new System.Drawing.Size(86, 20);
             this.lblContactID.TabIndex = 1;
             this.lblContactID.Text = "Contact ID";
-            this.lblContactID.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtboxContactId
             // 
@@ -85,9 +84,9 @@
             this.txtboxContactId.Location = new System.Drawing.Point(153, 182);
             this.txtboxContactId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtboxContactId.Name = "txtboxContactId";
+            this.txtboxContactId.ReadOnly = true;
             this.txtboxContactId.Size = new System.Drawing.Size(250, 26);
             this.txtboxContactId.TabIndex = 2;
-            this.txtboxContactId.TextChanged += new System.EventHandler(this.txtboxContactId_TextChanged);
             // 
             // txtboxFirstName
             // 
@@ -108,7 +107,6 @@
             this.lblFirstName.Size = new System.Drawing.Size(86, 20);
             this.lblFirstName.TabIndex = 3;
             this.lblFirstName.Text = "First Name";
-            this.lblFirstName.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lblAddress
             // 
@@ -161,7 +159,6 @@
             this.lblLastName.Size = new System.Drawing.Size(86, 20);
             this.lblLastName.TabIndex = 3;
             this.lblLastName.Text = "Last Name";
-            this.lblLastName.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtboxLastName
             // 
@@ -171,7 +168,6 @@
             this.txtboxLastName.Name = "txtboxLastName";
             this.txtboxLastName.Size = new System.Drawing.Size(250, 26);
             this.txtboxLastName.TabIndex = 4;
-            this.txtboxLastName.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // comboboxGender
             // 
@@ -207,6 +203,7 @@
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -219,6 +216,7 @@
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -231,6 +229,7 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -243,14 +242,16 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // dataGridView1
+            // dgvContactList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(476, 225);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(496, 246);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvContactList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContactList.Location = new System.Drawing.Point(476, 225);
+            this.dgvContactList.Name = "dgvContactList";
+            this.dgvContactList.Size = new System.Drawing.Size(496, 246);
+            this.dgvContactList.TabIndex = 8;
+            this.dgvContactList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvContactList_RowHeaderMouseClick);
             // 
             // lblSearch
             // 
@@ -262,7 +263,6 @@
             this.lblSearch.Size = new System.Drawing.Size(60, 20);
             this.lblSearch.TabIndex = 1;
             this.lblSearch.Text = "Search";
-            this.lblSearch.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtboxSearch
             // 
@@ -272,7 +272,7 @@
             this.txtboxSearch.Name = "txtboxSearch";
             this.txtboxSearch.Size = new System.Drawing.Size(427, 26);
             this.txtboxSearch.TabIndex = 2;
-            this.txtboxSearch.TextChanged += new System.EventHandler(this.txtboxContactId_TextChanged);
+            this.txtboxSearch.TextChanged += new System.EventHandler(this.txtboxSearch_TextChanged);
             // 
             // picboxExit
             // 
@@ -283,14 +283,15 @@
             this.picboxExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picboxExit.TabIndex = 9;
             this.picboxExit.TabStop = false;
+            this.picboxExit.Click += new System.EventHandler(this.picboxExit_Click);
             // 
-            // Econtact
+            // EContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 624);
             this.Controls.Add(this.picboxExit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvContactList);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -313,11 +314,11 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Econtact";
+            this.Name = "EContact";
             this.Text = "Econtact";
-            this.Load += new System.EventHandler(this.Econtact_Load);
+            this.Load += new System.EventHandler(this.EContact_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContactList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxExit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -343,7 +344,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvContactList;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtboxSearch;
         private System.Windows.Forms.PictureBox picboxExit;

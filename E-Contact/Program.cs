@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_Contact
+namespace EContact
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace E_Contact
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Econtact());
+            Application.Run(new EContact());
         }
     }
 }

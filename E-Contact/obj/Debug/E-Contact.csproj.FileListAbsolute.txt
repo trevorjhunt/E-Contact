@@ -8,3 +8,11 @@ C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.csproj.GenerateRe
 C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.csproj.CoreCompileInputs.cache
 C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.exe
 C:\Users\trevor\Documents\GitHub\E-Contact\obj\Debug\E-Contact.pdb
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\bin\Debug\E-Contact.exe.config
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\bin\Debug\E-Contact.exe
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\bin\Debug\E-Contact.pdb
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\obj\Debug\E_Contact.Econtact.resources
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\obj\Debug\E_Contact.Properties.Resources.resources
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\obj\Debug\E-Contact.csproj.GenerateResource.cache
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\obj\Debug\E-Contact.exe
+C:\Users\Joey\Documents\GitHub\E-contact\E-Contact\obj\Debug\E-Contact.pdb

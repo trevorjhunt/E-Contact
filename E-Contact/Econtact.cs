@@ -1,50 +1,144 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using EContact.EContactClasses;
+using System;
+using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace E_Contact
+namespace EContact
 {
-    public partial class Econtact : Form
+    public partial class EContact : Form
     {
-        public Econtact()
+        public EContact()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        EContactClass c = new EContactClass();
+
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            // get the value from the input fields
+            c.FirstName = txtboxFirstName.Text;
+            c.LastName = txtboxLastName.Text;
+            c.Address = txtboxAddress.Text;
+            c.PhoneNumber = txtboxPhoneNumber.Text;
+            c.Gender = comboboxGender.Text;
+
+            // insert the data into the DB table 
+            bool success = c.Insert(c);
+            if (success == true)
+            {
+                MessageBox.Show("New Contact inserted");
+                Clear();
+            }
+            else
+                MessageBox.Show("New Contact was not inserted. Try again");
+
+            //Load the data to the data grid view
+            DataTable dt = c.Select();
+            dgvContactList.DataSource = dt;
+        }
+
+        private void EContact_Load(object sender, EventArgs e)
+        {
+            //Load the data to the data grid view
+            DataTable dt = c.Select();
+            dgvContactList.DataSource = dt;
+        }
+
+        private void picboxExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        // clear the values from the input fields
+        public void Clear()
+        {
+            txtboxContactId.Text = "";
+            txtboxFirstName.Text = "";
+            txtboxLastName.Text = "";
+            txtboxAddress.Text = "";
+            txtboxPhoneNumber.Text = "";
+            comboboxGender.Text = "";
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            c.ContactID = int.Parse(txtboxContactId.Text);
+            c.FirstName = txtboxFirstName.Text;
+            c.LastName = txtboxLastName.Text;
+            c.Address = txtboxAddress.Text;
+            c.PhoneNumber = txtboxPhoneNumber.Text;
+            c.Gender = comboboxGender.Text;
+
+            // update the data into the DB table 
+            bool success = c.Update(c);
+            if (success == true)
+            {
+                MessageBox.Show("Contact updated");
+                Clear();
+            }
+            else
+                MessageBox.Show("Contact was not updated. Try again");
+
+            //Load the data to the data grid view
+            DataTable dt = c.Select();
+            dgvContactList.DataSource = dt;
+        }
+
+
+        // get the data from the data grid view and load in input text fields 
+        private void dgvContactList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // id the row that was mouse clicked
+            int rowIndex = e.RowIndex;
+            txtboxContactId.Text = dgvContactList.Rows[rowIndex].Cells[0].Value.ToString();
+            txtboxFirstName.Text = dgvContactList.Rows[rowIndex].Cells[1].Value.ToString();
+            txtboxLastName.Text = dgvContactList.Rows[rowIndex].Cells[2].Value.ToString();
+            txtboxAddress.Text = dgvContactList.Rows[rowIndex].Cells[3].Value.ToString();
+            txtboxPhoneNumber.Text = dgvContactList.Rows[rowIndex].Cells[4].Value.ToString();
+            comboboxGender.Text = dgvContactList.Rows[rowIndex].Cells[5].Value.ToString();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            c.ContactID = Convert.ToInt32(txtboxContactId.Text);
+            bool success = c.Delete(c);
+
+            if (success == true)
+            {
+                MessageBox.Show("Contact deleted");
+
+                //Load the data to the data grid view.. refresh view
+                DataTable dt = c.Select();
+                dgvContactList.DataSource = dt;
+
+                Clear();
+            }
+            else
+                MessageBox.Show("Contact was not deleted. Try again");
 
         }
 
-        private void Econtact_Load(object sender, EventArgs e)
+        static string my_connection_string = ConfigurationManager.ConnectionStrings["connection_string"].ConnectionString;
+
+        private void txtboxSearch_TextChanged(object sender, EventArgs e)
         {
+            // get the value from the text box
+            string keyword = txtboxSearch.Text;
 
-        }
-
-        private void txtboxContactId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
+            SqlConnection conn = new SqlConnection(my_connection_string);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM EContactDbTable WHERE FirstName LIKE '%" + keyword + "' OR LastName LIKE '%" + keyword + "' OR Address LIKE '%" + keyword + "' ", conn);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            dgvContactList.DataSource = dt;
         }
     }
 }
